@@ -1,0 +1,462 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\TC\\source\\repos\\ONE\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{573EEEF8-749B-4066-9A16-7C8A7C58C51B}|ONE\\ONE.csproj|c:\\users\\tc\\source\\repos\\one\\one\\views\\account\\profile.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{573EEEF8-749B-4066-9A16-7C8A7C58C51B}|ONE\\ONE.csproj|solutionrelative:one\\views\\account\\profile.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{573EEEF8-749B-4066-9A16-7C8A7C58C51B}|ONE\\ONE.csproj|c:\\users\\tc\\source\\repos\\one\\one\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{573EEEF8-749B-4066-9A16-7C8A7C58C51B}|ONE\\ONE.csproj|solutionrelative:one\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{573EEEF8-749B-4066-9A16-7C8A7C58C51B}|ONE\\ONE.csproj|c:\\users\\tc\\source\\repos\\one\\one\\controllers\\favoritecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{573EEEF8-749B-4066-9A16-7C8A7C58C51B}|ONE\\ONE.csproj|solutionrelative:one\\controllers\\favoritecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{573EEEF8-749B-4066-9A16-7C8A7C58C51B}|ONE\\ONE.csproj|c:\\users\\tc\\source\\repos\\one\\one\\controllers\\chatcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{573EEEF8-749B-4066-9A16-7C8A7C58C51B}|ONE\\ONE.csproj|solutionrelative:one\\controllers\\chatcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{573EEEF8-749B-4066-9A16-7C8A7C58C51B}|ONE\\ONE.csproj|c:\\users\\tc\\source\\repos\\one\\one\\controllers\\videocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{573EEEF8-749B-4066-9A16-7C8A7C58C51B}|ONE\\ONE.csproj|solutionrelative:one\\controllers\\videocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{573EEEF8-749B-4066-9A16-7C8A7C58C51B}|ONE\\ONE.csproj|c:\\users\\tc\\source\\repos\\one\\one\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{573EEEF8-749B-4066-9A16-7C8A7C58C51B}|ONE\\ONE.csproj|solutionrelative:one\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{573EEEF8-749B-4066-9A16-7C8A7C58C51B}|ONE\\ONE.csproj|c:\\users\\tc\\source\\repos\\one\\one\\controllers\\rolecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{573EEEF8-749B-4066-9A16-7C8A7C58C51B}|ONE\\ONE.csproj|solutionrelative:one\\controllers\\rolecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{573EEEF8-749B-4066-9A16-7C8A7C58C51B}|ONE\\ONE.csproj|c:\\users\\tc\\source\\repos\\one\\one\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{573EEEF8-749B-4066-9A16-7C8A7C58C51B}|ONE\\ONE.csproj|solutionrelative:one\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{573EEEF8-749B-4066-9A16-7C8A7C58C51B}|ONE\\ONE.csproj|c:\\users\\tc\\source\\repos\\one\\one\\views\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{573EEEF8-749B-4066-9A16-7C8A7C58C51B}|ONE\\ONE.csproj|solutionrelative:one\\views\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{573EEEF8-749B-4066-9A16-7C8A7C58C51B}|ONE\\ONE.csproj|c:\\users\\tc\\source\\repos\\one\\one\\views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{573EEEF8-749B-4066-9A16-7C8A7C58C51B}|ONE\\ONE.csproj|solutionrelative:one\\views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{573EEEF8-749B-4066-9A16-7C8A7C58C51B}|ONE\\ONE.csproj|c:\\users\\tc\\source\\repos\\one\\one\\views\\video\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{573EEEF8-749B-4066-9A16-7C8A7C58C51B}|ONE\\ONE.csproj|solutionrelative:one\\views\\video\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{573EEEF8-749B-4066-9A16-7C8A7C58C51B}|ONE\\ONE.csproj|c:\\users\\tc\\source\\repos\\one\\one\\views\\video\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{573EEEF8-749B-4066-9A16-7C8A7C58C51B}|ONE\\ONE.csproj|solutionrelative:one\\views\\video\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{573EEEF8-749B-4066-9A16-7C8A7C58C51B}|ONE\\ONE.csproj|c:\\users\\tc\\source\\repos\\one\\one\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{573EEEF8-749B-4066-9A16-7C8A7C58C51B}|ONE\\ONE.csproj|solutionrelative:one\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{573EEEF8-749B-4066-9A16-7C8A7C58C51B}|ONE\\ONE.csproj|c:\\users\\tc\\source\\repos\\one\\one\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{573EEEF8-749B-4066-9A16-7C8A7C58C51B}|ONE\\ONE.csproj|solutionrelative:one\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{573EEEF8-749B-4066-9A16-7C8A7C58C51B}|ONE\\ONE.csproj|c:\\users\\tc\\source\\repos\\one\\one\\views\\favorite\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{573EEEF8-749B-4066-9A16-7C8A7C58C51B}|ONE\\ONE.csproj|solutionrelative:one\\views\\favorite\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{573EEEF8-749B-4066-9A16-7C8A7C58C51B}|ONE\\ONE.csproj|c:\\users\\tc\\source\\repos\\one\\one\\views\\admin\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{573EEEF8-749B-4066-9A16-7C8A7C58C51B}|ONE\\ONE.csproj|solutionrelative:one\\views\\admin\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{573EEEF8-749B-4066-9A16-7C8A7C58C51B}|ONE\\ONE.csproj|c:\\users\\tc\\source\\repos\\one\\one\\views\\chat\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{573EEEF8-749B-4066-9A16-7C8A7C58C51B}|ONE\\ONE.csproj|solutionrelative:one\\views\\chat\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{573EEEF8-749B-4066-9A16-7C8A7C58C51B}|ONE\\ONE.csproj|c:\\users\\tc\\source\\repos\\one\\one\\services\\favoriteservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{573EEEF8-749B-4066-9A16-7C8A7C58C51B}|ONE\\ONE.csproj|solutionrelative:one\\services\\favoriteservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{573EEEF8-749B-4066-9A16-7C8A7C58C51B}|ONE\\ONE.csproj|c:\\users\\tc\\source\\repos\\one\\one\\models\\favoritevideo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{573EEEF8-749B-4066-9A16-7C8A7C58C51B}|ONE\\ONE.csproj|solutionrelative:one\\models\\favoritevideo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{573EEEF8-749B-4066-9A16-7C8A7C58C51B}|ONE\\ONE.csproj|c:\\users\\tc\\source\\repos\\one\\one\\data\\adddbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{573EEEF8-749B-4066-9A16-7C8A7C58C51B}|ONE\\ONE.csproj|solutionrelative:one\\data\\adddbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{573EEEF8-749B-4066-9A16-7C8A7C58C51B}|ONE\\ONE.csproj|c:\\users\\tc\\source\\repos\\one\\one\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{573EEEF8-749B-4066-9A16-7C8A7C58C51B}|ONE\\ONE.csproj|solutionrelative:one\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\TC\\source\\repos\\ONE\\ONE\\Migrations\\20250216032839_Favorite.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:ONE\\Migrations\\20250216032839_Favorite.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{573EEEF8-749B-4066-9A16-7C8A7C58C51B}|ONE\\ONE.csproj|c:\\users\\tc\\source\\repos\\one\\one\\dtos\\youtubevideodata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{573EEEF8-749B-4066-9A16-7C8A7C58C51B}|ONE\\ONE.csproj|solutionrelative:one\\dtos\\youtubevideodata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{573EEEF8-749B-4066-9A16-7C8A7C58C51B}|ONE\\ONE.csproj|c:\\users\\tc\\source\\repos\\one\\one\\dtos\\registerdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{573EEEF8-749B-4066-9A16-7C8A7C58C51B}|ONE\\ONE.csproj|solutionrelative:one\\dtos\\registerdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\TC\\source\\repos\\ONE\\ONE\\Migrations\\20250216023557_updatechat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:ONE\\Migrations\\20250216023557_updatechat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{573EEEF8-749B-4066-9A16-7C8A7C58C51B}|ONE\\ONE.csproj|c:\\users\\tc\\source\\repos\\one\\one\\models\\chatmessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{573EEEF8-749B-4066-9A16-7C8A7C58C51B}|ONE\\ONE.csproj|solutionrelative:one\\models\\chatmessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\TC\\source\\repos\\ONE\\ONE\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "ONE\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\TC\\source\\repos\\ONE\\ONE\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "ONE\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAABQAAADAzMzMzMwgwB8AAABhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-02-16T00:38:09.954Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "C:\\Users\\TC\\source\\repos\\ONE\\ONE\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "ONE\\Controllers\\AccountController.cs",
+              "ToolTip": "C:\\Users\\TC\\source\\repos\\ONE\\ONE\\Controllers\\AccountController.cs",
+              "RelativeToolTip": "ONE\\Controllers\\AccountController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEMAAABBAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-15T23:43:04.756Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "VideoController.cs",
+              "DocumentMoniker": "C:\\Users\\TC\\source\\repos\\ONE\\ONE\\Controllers\\VideoController.cs",
+              "RelativeDocumentMoniker": "ONE\\Controllers\\VideoController.cs",
+              "ToolTip": "C:\\Users\\TC\\source\\repos\\ONE\\ONE\\Controllers\\VideoController.cs",
+              "RelativeToolTip": "ONE\\Controllers\\VideoController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-16T04:03:13.855Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ChatController.cs",
+              "DocumentMoniker": "C:\\Users\\TC\\source\\repos\\ONE\\ONE\\Controllers\\ChatController.cs",
+              "RelativeDocumentMoniker": "ONE\\Controllers\\ChatController.cs",
+              "ToolTip": "C:\\Users\\TC\\source\\repos\\ONE\\ONE\\Controllers\\ChatController.cs",
+              "RelativeToolTip": "ONE\\Controllers\\ChatController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFUAAABXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-16T02:33:25.123Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "FavoriteController.cs",
+              "DocumentMoniker": "C:\\Users\\TC\\source\\repos\\ONE\\ONE\\Controllers\\FavoriteController.cs",
+              "RelativeDocumentMoniker": "ONE\\Controllers\\FavoriteController.cs",
+              "ToolTip": "C:\\Users\\TC\\source\\repos\\ONE\\ONE\\Controllers\\FavoriteController.cs",
+              "RelativeToolTip": "ONE\\Controllers\\FavoriteController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-16T03:33:12.936Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Profile.cshtml",
+              "DocumentMoniker": "C:\\Users\\TC\\source\\repos\\ONE\\ONE\\Views\\Account\\Profile.cshtml",
+              "RelativeDocumentMoniker": "ONE\\Views\\Account\\Profile.cshtml",
+              "ToolTip": "C:\\Users\\TC\\source\\repos\\ONE\\ONE\\Views\\Account\\Profile.cshtml",
+              "RelativeToolTip": "ONE\\Views\\Account\\Profile.cshtml",
+              "ViewState": "AgIAAAkAAABAMzMzMzMrwBkAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-02-16T02:18:14.33Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "RoleController.cs",
+              "DocumentMoniker": "C:\\Users\\TC\\source\\repos\\ONE\\ONE\\Controllers\\RoleController.cs",
+              "RelativeDocumentMoniker": "ONE\\Controllers\\RoleController.cs",
+              "ToolTip": "C:\\Users\\TC\\source\\repos\\ONE\\ONE\\Controllers\\RoleController.cs",
+              "RelativeToolTip": "ONE\\Controllers\\RoleController.cs",
+              "ViewState": "AgIAAAQAAACAMzMzMzMrwAgAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-16T04:03:19.866Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "AdminController.cs",
+              "DocumentMoniker": "C:\\Users\\TC\\source\\repos\\ONE\\ONE\\Controllers\\AdminController.cs",
+              "RelativeDocumentMoniker": "ONE\\Controllers\\AdminController.cs",
+              "ToolTip": "C:\\Users\\TC\\source\\repos\\ONE\\ONE\\Controllers\\AdminController.cs",
+              "RelativeToolTip": "ONE\\Controllers\\AdminController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-16T04:02:53.18Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Register.cshtml",
+              "DocumentMoniker": "C:\\Users\\TC\\source\\repos\\ONE\\ONE\\Views\\Account\\Register.cshtml",
+              "RelativeDocumentMoniker": "ONE\\Views\\Account\\Register.cshtml",
+              "ToolTip": "C:\\Users\\TC\\source\\repos\\ONE\\ONE\\Views\\Account\\Register.cshtml",
+              "RelativeToolTip": "ONE\\Views\\Account\\Register.cshtml",
+              "ViewState": "AgIAAA0AAAAAzczMzMwmwCMAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-02-16T02:45:00.587Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Login.cshtml",
+              "DocumentMoniker": "C:\\Users\\TC\\source\\repos\\ONE\\ONE\\Views\\Account\\Login.cshtml",
+              "RelativeDocumentMoniker": "ONE\\Views\\Account\\Login.cshtml",
+              "ToolTip": "C:\\Users\\TC\\source\\repos\\ONE\\ONE\\Views\\Account\\Login.cshtml",
+              "RelativeToolTip": "ONE\\Views\\Account\\Login.cshtml",
+              "ViewState": "AgIAACIAAAAAAAAAAAAUwDUAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-02-16T03:52:45.966Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\TC\\source\\repos\\ONE\\ONE\\Views\\Video\\Index.cshtml",
+              "RelativeDocumentMoniker": "ONE\\Views\\Video\\Index.cshtml",
+              "ToolTip": "C:\\Users\\TC\\source\\repos\\ONE\\ONE\\Views\\Video\\Index.cshtml",
+              "RelativeToolTip": "ONE\\Views\\Video\\Index.cshtml",
+              "ViewState": "AgIAAEQAAAAAAAAAAAAgwFcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-02-16T04:12:48.401Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "C:\\Users\\TC\\source\\repos\\ONE\\ONE\\Views\\Video\\Create.cshtml",
+              "RelativeDocumentMoniker": "ONE\\Views\\Video\\Create.cshtml",
+              "ToolTip": "C:\\Users\\TC\\source\\repos\\ONE\\ONE\\Views\\Video\\Create.cshtml",
+              "RelativeToolTip": "ONE\\Views\\Video\\Create.cshtml",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAA8AAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-02-16T04:14:33.352Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\TC\\source\\repos\\ONE\\ONE\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "ONE\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\TC\\source\\repos\\ONE\\ONE\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "ONE\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAAAYAAABgZmZmZmYkwB0AAABhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-16T04:03:33.838Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\TC\\source\\repos\\ONE\\ONE\\Views\\Favorite\\Index.cshtml",
+              "RelativeDocumentMoniker": "ONE\\Views\\Favorite\\Index.cshtml",
+              "ToolTip": "C:\\Users\\TC\\source\\repos\\ONE\\ONE\\Views\\Favorite\\Index.cshtml",
+              "RelativeToolTip": "ONE\\Views\\Favorite\\Index.cshtml",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABgAAABLAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-02-16T03:35:14.621Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "AddDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\TC\\source\\repos\\ONE\\ONE\\Data\\AddDbContext.cs",
+              "RelativeDocumentMoniker": "ONE\\Data\\AddDbContext.cs",
+              "ToolTip": "C:\\Users\\TC\\source\\repos\\ONE\\ONE\\Data\\AddDbContext.cs",
+              "RelativeToolTip": "ONE\\Data\\AddDbContext.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAgwBMAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-16T03:27:56.781Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\TC\\source\\repos\\ONE\\ONE\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "ONE\\Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Users\\TC\\source\\repos\\ONE\\ONE\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "ONE\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-02-16T03:35:42.558Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\TC\\source\\repos\\ONE\\ONE\\Views\\Admin\\Index.cshtml",
+              "RelativeDocumentMoniker": "ONE\\Views\\Admin\\Index.cshtml",
+              "ToolTip": "C:\\Users\\TC\\source\\repos\\ONE\\ONE\\Views\\Admin\\Index.cshtml",
+              "RelativeToolTip": "ONE\\Views\\Admin\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-02-16T03:52:27.029Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "FavoriteService.cs",
+              "DocumentMoniker": "C:\\Users\\TC\\source\\repos\\ONE\\ONE\\Services\\FavoriteService.cs",
+              "RelativeDocumentMoniker": "ONE\\Services\\FavoriteService.cs",
+              "ToolTip": "C:\\Users\\TC\\source\\repos\\ONE\\ONE\\Services\\FavoriteService.cs",
+              "RelativeToolTip": "ONE\\Services\\FavoriteService.cs",
+              "ViewState": "AgIAACIAAAAAAAAAAAAhwC4AAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-16T03:28:57.321Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "FavoriteVideo.cs",
+              "DocumentMoniker": "C:\\Users\\TC\\source\\repos\\ONE\\ONE\\Models\\FavoriteVideo.cs",
+              "RelativeDocumentMoniker": "ONE\\Models\\FavoriteVideo.cs",
+              "ToolTip": "C:\\Users\\TC\\source\\repos\\ONE\\ONE\\Models\\FavoriteVideo.cs",
+              "RelativeToolTip": "ONE\\Models\\FavoriteVideo.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-16T03:26:41.269Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\TC\\source\\repos\\ONE\\ONE\\Views\\Chat\\Index.cshtml",
+              "RelativeDocumentMoniker": "ONE\\Views\\Chat\\Index.cshtml",
+              "ToolTip": "C:\\Users\\TC\\source\\repos\\ONE\\ONE\\Views\\Chat\\Index.cshtml",
+              "RelativeToolTip": "ONE\\Views\\Chat\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAJwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-02-16T02:29:45.005Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "20250216032839_Favorite.cs",
+              "DocumentMoniker": "C:\\Users\\TC\\source\\repos\\ONE\\ONE\\Migrations\\20250216032839_Favorite.cs",
+              "RelativeDocumentMoniker": "ONE\\Migrations\\20250216032839_Favorite.cs",
+              "ToolTip": "C:\\Users\\TC\\source\\repos\\ONE\\ONE\\Migrations\\20250216032839_Favorite.cs",
+              "RelativeToolTip": "ONE\\Migrations\\20250216032839_Favorite.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-16T03:28:40.004Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "YouTubeVideoData.cs",
+              "DocumentMoniker": "C:\\Users\\TC\\source\\repos\\ONE\\ONE\\DTOs\\YouTubeVideoData.cs",
+              "RelativeDocumentMoniker": "ONE\\DTOs\\YouTubeVideoData.cs",
+              "ToolTip": "C:\\Users\\TC\\source\\repos\\ONE\\ONE\\DTOs\\YouTubeVideoData.cs",
+              "RelativeToolTip": "ONE\\DTOs\\YouTubeVideoData.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-16T03:22:43.803Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\TC\\source\\repos\\ONE\\ONE\\Program.cs",
+              "RelativeDocumentMoniker": "ONE\\Program.cs",
+              "ToolTip": "C:\\Users\\TC\\source\\repos\\ONE\\ONE\\Program.cs",
+              "RelativeToolTip": "ONE\\Program.cs",
+              "ViewState": "AgIAABQAAABgZmZmZmYkwCYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-16T00:51:57.049Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "20250216023557_updatechat.cs",
+              "DocumentMoniker": "C:\\Users\\TC\\source\\repos\\ONE\\ONE\\Migrations\\20250216023557_updatechat.cs",
+              "RelativeDocumentMoniker": "ONE\\Migrations\\20250216023557_updatechat.cs",
+              "ToolTip": "C:\\Users\\TC\\source\\repos\\ONE\\ONE\\Migrations\\20250216023557_updatechat.cs",
+              "RelativeToolTip": "ONE\\Migrations\\20250216023557_updatechat.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-16T02:35:58.015Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "ChatMessage.cs",
+              "DocumentMoniker": "C:\\Users\\TC\\source\\repos\\ONE\\ONE\\Models\\ChatMessage.cs",
+              "RelativeDocumentMoniker": "ONE\\Models\\ChatMessage.cs",
+              "ToolTip": "C:\\Users\\TC\\source\\repos\\ONE\\ONE\\Models\\ChatMessage.cs",
+              "RelativeToolTip": "ONE\\Models\\ChatMessage.cs",
+              "ViewState": "AgIAAAkAAADAzMzMzMwYwBAAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-16T02:35:28.187Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "RegisterDTOs.cs",
+              "DocumentMoniker": "C:\\Users\\TC\\source\\repos\\ONE\\ONE\\DTOs\\RegisterDTOs.cs",
+              "RelativeDocumentMoniker": "ONE\\DTOs\\RegisterDTOs.cs",
+              "ToolTip": "C:\\Users\\TC\\source\\repos\\ONE\\ONE\\DTOs\\RegisterDTOs.cs",
+              "RelativeToolTip": "ONE\\DTOs\\RegisterDTOs.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwBIAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-16T02:47:20.765Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

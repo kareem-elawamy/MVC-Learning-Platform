@@ -1,0 +1,80 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model IEnumerable<ONE.Models.Video>
+<div class="container mt-4">
+    <h2 class="mb-4 text-center">📹 Educational Videos List</h2>
+
+    <form method="get" asp-action="Index" class="mb-4 p-3 rounded shadow-sm bg-light">
+        <div class="row g-3 align-items-end">
+            <div class="col-md-4">
+                <label for="trackId" class="form-label fw-bold">🎯 Select Track:</label>
+                <select id="trackId" name="trackId" class="form-select" asp-items="ViewBag.Tracks">
+                    <option value="">📌 All</option>
+                </select>
+            </div>
+
+            <div class="col-md-4">
+                <label for="materialId" class="form-label fw-bold">📚 Select Subject:</label>
+                <select id="materialId" name="materialId" class="form-select" asp-items="ViewBag.Materials">
+                    <option value="">📌 All</option>
+                </select>
+            </div>
+
+            <div class="col-md-4 d-flex justify-content-center">
+                <button type="submit" class="btn btn-primary px-4 fw-bold">🔍 Filter</button>
+            </div>
+        </div>
+    </form>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        @foreach (var video in Model)
+        {
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+                    <a href="https://www.youtube.com/watch?v=@video.VideoId" target="_blank" class="text-decoration-none">
+                        <img src="@video.ThumbnailUrl" class="card-img-top rounded-top" alt="Video Thumbnail">
+                    </a>
+                    <div class="card-body text-center">
+                        <h5 class="card-title fw-bold text-primary">@video.Title</h5>
+                        <p class="card-text text-muted">
+                            @(video.Description.Length > 80 ? video.Description.Substring(0, 80) + "..." : video.Description)
+                        </p>
+                        <p class="small text-secondary">
+                            📚 Subject: <strong>@video.Material?.Name</strong> | 🎯 Track: <strong>@video.Material?.Track?.Name</strong>
+                        </p>
+                    </div>
+                    <div class="card-footer text-center bg-white border-0">
+                        <a href="https://www.youtube.com/watch?v=@video.VideoId" target="_blank" class="btn btn-success w-75 fw-bold">
+                            ▶️ Watch Video
+                        </a>
+                        <form method="post" asp-controller="Favorite" asp-action="Add">
+                            <input type="hidden" name="videoId" value="@video.Id" />
+                            <button type="submit" class="btn btn-secondary mt-2">Add to Favorites</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<script>
+    document.getElementById("trackId").addEventListener("change", function () {
+        var trackId = this.value;
+        var materialDropdown = document.getElementById("materialId");
+
+        if (trackId) {
+            fetch(`/Video/GetMaterialsByTrack?trackId=` + trackId)
+                .then(response => response.json())
+                .then(data => {
+                    materialDropdown.innerHTML = '<option value="">📌 All</option>';
+                    data.forEach(material => {
+                        materialDropdown.innerHTML += `<option value="${material.id}">${material.name}</option>`;
+                    });
+                })
+                .catch(error => console.error("Error fetching materials:", error));
+        } else {
+            materialDropdown.innerHTML = '<option value="">📌 All</option>';
+        }
+    });
+</script>

@@ -1,0 +1,102 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject UserManager<ApplicationUser> UserManager
+@inject SignInManager<ApplicationUser> SignInManager
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ONE</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/ONE.styles.css" asp-append-version="true" />
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" asp-controller="Home" asp-action="Index">ONE</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" asp-controller="Home" asp-action="Index" aria-current="page" >Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Chat" asp-action="Index" >Chat</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Favorite" asp-action="Index">Favorite</a>
+                    </li>
+                </ul>
+
+                <ul class="navbar-nav ms-auto">
+                    @if (!User.Identity.IsAuthenticated)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" asp-action="Register" asp-controller="Account">Register</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-action="Login" asp-controller="Account">Login</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item"  style="display: flex; align-items: center;  justify-content: center;">
+                            <a class="nav-link " asp-action="SiginOut" asp-controller="Account">Logout</a>
+                        </li>
+                        
+                        @if (SignInManager.IsSignedIn(User))
+                        {
+                            var user = User != null ? await UserManager.GetUserAsync(User) : null;
+                            if (user != null)
+                            {
+                                // Proceed with user-specific logic
+                            <li class="nav-item" style="display: flex; align-items: center;  justify-content: center;">
+                                <a class="nav-link" asp-action="Profile" asp-controller="Account">Hi, @user.UserName</a>
+                            </li>
+                            @if (user.PictureSource != null)
+                            {
+                                <li class="nav-item ">
+                                    <a class="nav-link" asp-action="Profile"  asp-controller="Account">
+                                    
+
+                                    <img src="data:image/jpeg;base64,@(Convert.ToBase64String(user.PictureSource))"
+                                         alt="User Picture"
+                                         style="width:50px;height:50px;border-radius:50%;" />
+                                    </a>
+                                </li>
+                            }
+                                @if(User.Identity.AuthenticationType=="Admin"){
+                                    <li class="nav-item" style="display: flex; align-items: center;  justify-content: center;">
+                                        <a class="nav-link" asp-action="Video" asp-controller="Index">Video</a>
+                                    </li>
+                                    <li class="nav-item" style="display: flex; align-items: center;  justify-content: center;">
+                                        <a class="nav-link" asp-action="Admin" asp-controller="Index">Admin</a>
+                                    </li>
+                                }
+                            }
+                        }
+
+                    }
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <main role="main">
+            @RenderBody()
+        </main>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

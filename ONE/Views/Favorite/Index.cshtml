@@ -1,0 +1,38 @@
+﻿@model List<ONE.Models.Video>
+
+<h2>My favorite</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Image</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>delete</th>
+            <th>display</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var video in Model)
+        {
+            <tr>
+                <td><img src="@video.ThumbnailUrl" width="100" /></td>
+                <td>@video.Title</td>
+                <td> @(video.Description.Length > 80 ? video.Description.Substring(0, 80) + "..." : video.Description)</td>
+                <td>
+                    <form method="post" asp-controller="Favorite" asp-action="Remove">
+                        <input type="hidden" name="videoId" value="@video.Id" />
+                        <button type="submit" class="btn btn-danger">delete</button>
+                    </form>
+
+                </td>
+                <td>
+                    <a href="https://www.youtube.com/watch?v=@video.VideoId" target="_blank" class="btn btn-success w-auto fw-bold">
+                        ▶️ 
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+    
