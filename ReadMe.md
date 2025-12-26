@@ -49,7 +49,6 @@
 | :---: | :---: | :---: |
 | ![Home](screenshots/home.jpg) | ![Create_Account](screenshots/create_account.jpg) | ![Add_Video](screenshots/create_video.jpg) |
 
-*(Note: Make sure the image filenames match exactly what is in your screenshots folder)*
 
 ---
 
