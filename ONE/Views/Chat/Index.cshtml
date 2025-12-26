@@ -2,6 +2,8 @@
     ViewData["Title"] = "Chat with Gemini AI";
 }
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>
+
 <div class="container chat-container">
     <div id="chat-box">
         <div id="messages"></div>
@@ -14,66 +16,85 @@
 </div>
 
 <script>
-    async function loadChatHistory() {
-        let chatBox = document.getElementById("messages");
+    // 1. إنشاء الاتصال مع الـ Hub
+    var connection = new signalR.HubConnectionBuilder().withUrl("/chatHub").build();
 
+    // 2. استقبال الرسائل من السيرفر (سواء مني أو من البوت)
+    connection.on("ReceiveMessage", function (sender, message) {
+        appendMessage(sender, message);
+    });
+
+    // 3. بدء الاتصال
+    connection.start().then(function () {
+        console.log("✅ Connected to SignalR Hub");
+        loadChatHistory(); // حمل الشات القديم بعد الاتصال
+    }).catch(function (err) {
+        return console.error(err.toString());
+    });
+
+    // إرسال الرسالة
+    function sendMessage() {
+        var userInput = document.getElementById("user-message").value.trim();
+        if (!userInput) return;
+
+        // اعرض رسالتي فوراً عندي
+        appendMessage("user", userInput);
+
+        // ابعت الرسالة للسيرفر (Hub)
+        connection.invoke("SendMessage", userInput).catch(function (err) {
+            return console.error(err.toString());
+        });
+
+        document.getElementById("user-message").value = "";
+    }
+
+    // دالة عرض الرسائل
+    function appendMessage(sender, text) {
+        let chatBox = document.getElementById("messages");
+        let msgDiv = document.createElement("div");
+        msgDiv.classList.add("message", sender === "user" ? "user-message" : "bot-message");
+
+        // تحسين بسيط: لو بوت، ممكن نعمل تأثير كتابة أو أيقونة
+        let icon = sender === "user" ? "🧑‍💻" : "🤖";
+        msgDiv.innerHTML = `${icon} ${text}`;
+
+        chatBox.appendChild(msgDiv);
+
+        // انزل لتحت تلقائي
+        // بنستخدم setTimeout عشان نضمن ان العنصر اترسم الاول
+        setTimeout(() => {
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }, 50);
+    }
+
+    // تحميل الرسائل القديمة (لسه شغالة بالـ API عادي)
+    async function loadChatHistory() {
         try {
             let response = await fetch('/Chat/GetChatHistory', { cache: "no-store" });
             let messages = await response.json();
 
-            chatBox.innerHTML = "";
+            // فضي الشات القديم
+            document.getElementById("messages").innerHTML = "";
 
             messages.reverse().forEach(msg => {
                 appendMessage("user", msg.userMessage);
                 appendMessage("bot", msg.botResponse);
             });
-
-            chatBox.scrollTop = chatBox.scrollHeight;
         } catch (error) {
-            console.error("Error loading messages: ", error);
+            console.error("Error loading history: ", error);
         }
     }
 
-    async function sendMessage() {
-        let userInput = document.getElementById("user-message").value.trim();
-        if (!userInput) return;
-
-        appendMessage("user", userInput);
-
-        try {
-            let response = await fetch('/Chat/SendMessage', {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ UserMessage: userInput })
-            });
-
-            if (!response.ok) throw new Error("Error sending message");
-
-            let data = await response.json();
-            appendMessage("bot", data.Reply || "No response received");
-
-        } catch (error) {
-            appendMessage("bot", "⚠️ An error occurred while sending the message");
-            console.error(error);
+    // إرسال بالضغط على Enter
+    document.getElementById("user-message").addEventListener("keypress", function (event) {
+        if (event.key === "Enter") {
+            sendMessage();
         }
-
-        document.getElementById("user-message").value = "";
-        document.getElementById("messages").scrollTop = document.getElementById("messages").scrollHeight;
-    }
-
-    function appendMessage(sender, text) {
-        let chatBox = document.getElementById("messages");
-        let msgDiv = document.createElement("div");
-        msgDiv.classList.add("message", sender === "user" ? "user-message" : "bot-message");
-        msgDiv.innerHTML = sender === "user" ? `🧑‍💻 ${text}` : `🤖 ${text}`;
-        chatBox.appendChild(msgDiv);
-        chatBox.scrollTop = chatBox.scrollHeight;
-    }
-
-    document.addEventListener("DOMContentLoaded", loadChatHistory);
+    });
 </script>
 
 <style>
+    /* نفس الستايل بتاعك بالظبط مغيرتش فيه عشان هو جميل */
     .chat-container {
         margin-top: 80px;
         max-width: 700px;
@@ -91,6 +112,8 @@
         display: flex;
         flex-direction: column;
         gap: 10px;
+        scroll-behavior: smooth;
+        /* إضافة نعومة في السكرول */
     }
 
     .message {
@@ -99,58 +122,92 @@
         border-radius: 20px;
         font-size: 16px;
         word-wrap: break-word;
+        line-height: 1.5;
+        animation: fadeIn 0.3s ease;
+        /* انيميشن ظهور */
     }
 
     .user-message {
-        background-color: #007BFF;
+        background-color: #0d6efd;
+        /* لون البوتستراب */
         color: white;
         align-self: flex-end;
+        border-bottom-right-radius: 5px;
     }
 
     .bot-message {
-        background-color: #e0e0e0;
+        background-color: #e9ecef;
         color: black;
         align-self: flex-start;
+        border-bottom-left-radius: 5px;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
     }
 
     .input-container {
         display: flex;
-        padding: 10px;
+        padding: 15px;
         background-color: white;
         border-top: 1px solid #ddd;
     }
 
     input {
         flex: 1;
-        padding: 10px;
-        border: none;
-        border-radius: 5px;
+        padding: 12px;
+        border: 1px solid #ddd;
+        border-radius: 25px;
         font-size: 16px;
         outline: none;
         background-color: #f8f8f8;
+        transition: 0.3s;
+    }
+
+    input:focus {
+        border-color: #0d6efd;
+        background-color: #fff;
     }
 
     button {
-        background-color: #007BFF;
+        background-color: #0d6efd;
         color: white;
         border: none;
-        padding: 10px 15px;
-        border-radius: 5px;
+        padding: 10px 20px;
+        border-radius: 25px;
         cursor: pointer;
-        margin-left: 5px;
+        margin-left: 10px;
         font-size: 16px;
+        font-weight: bold;
+        transition: 0.3s;
     }
 
-        button:hover {
-            background-color: #0056b3;
+    button:hover {
+        background-color: #0b5ed7;
+        transform: translateY(-2px);
+    }
+
+    /* انيميشن بسيط للرسائل */
+    @@keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
         }
 
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* شكل السكرول بار */
     #chat-box::-webkit-scrollbar {
         width: 6px;
     }
 
     #chat-box::-webkit-scrollbar-thumb {
-        background-color: #007BFF;
+        background-color: #ccc;
         border-radius: 10px;
+    }
+
+    #chat-box::-webkit-scrollbar-track {
+        background-color: #f0f0f0;
     }
 </style>

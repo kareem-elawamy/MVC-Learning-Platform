@@ -1,88 +1,342 @@
 ﻿@model ONE.DTOs.RegisterDTOs
 @{
-    ViewData["Title"] = "Register";
+    ViewData["Title"] = "Create Account";
+    Layout = null;
 }
 
-<div class="container mt-5">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <div class="card shadow-lg border-0 rounded-3">
-                <div class="card-header bg-primary text-white text-center">
-                    <h3>🔐 Create Account</h3>
-                </div>
-                <div class="card-body p-4">
-                    <form asp-action="SaveRegister" method="post" enctype="multipart/form-data">
-                        <div asp-validation-summary="All" class="alert alert-danger"></div>
+<!DOCTYPE html>
+<html lang="en">
 
-                        
-                        <div class="mb-3 text-center">
-                            <label class="form-label fw-bold">📷 Upload Profile Picture</label>
-                            <input type="file" asp-for="PictureUser" class="form-control" onchange="LoadFile(event)" />
-                            <img id="myimg" class="rounded mt-3 shadow-sm" style="display: block; width: 150px; height: 150px; object-fit: cover;" />
-                        </div>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ONE Platform</title>
 
-                        <div class="mb-3">
-                            <label asp-for="UserName" class="form-label fw-bold">👤 Username</label>
-                            <input asp-for="UserName" class="form-control" placeholder="Enter your username" />
-                            <span asp-validation-for="UserName" class="text-danger"></span>
-                        </div>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-                        <div class="mb-3">
-                            <label asp-for="Email" class="form-label fw-bold">📧 Email</label>
-                            <input asp-for="Email" type="email" class="form-control" placeholder="Enter your email" />
-                            <span asp-validation-for="Email" class="text-danger"></span>
-                        </div>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0d6efd 0%, #0099ff 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px 15px;
+            /* هوامش صغيرة للموبايل */
+            overflow-x: hidden;
+            /* حل مشكلة السكرول العرضي */
+        }
 
-                        
-                        <div class="mb-3">
-                            <label asp-for="Password" class="form-label fw-bold">🔑 Password</label>
-                            <div class="input-group">
-                                <input asp-for="Password" type="password" class="form-control" id="password" placeholder="Enter password" />
-                                <button type="button" class="btn btn-outline-secondary" onclick="togglePassword('password')">👁️</button>
+        .register-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            border: none;
+            overflow: hidden;
+            width: 100%;
+            /* max-width هنا بنتحكم فيه عشان ميبقاش عريض اوي على الشاشات الكبيرة */
+            position: relative;
+            z-index: 10;
+        }
+
+        .register-header {
+            background: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+        }
+
+        /* تنسيق الصورة */
+        .profile-upload {
+            position: relative;
+            width: 110px;
+            height: 110px;
+            margin: 0 auto 15px;
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid #fff;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+            background-color: #f0f0f0;
+        }
+
+        .upload-icon {
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            background: #0d6efd;
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border: 3px solid white;
+            transition: all 0.2s;
+            font-size: 14px;
+        }
+
+        .upload-icon:hover {
+            background: #0056b3;
+            transform: scale(1.1);
+        }
+
+        /* تنسيق الحقول */
+        .form-control {
+            height: 45px;
+            border-radius: 0 10px 10px 0;
+            border: 1px solid #e1e1e1;
+            border-left: none;
+            background-color: #fcfcfc;
+            font-size: 0.95rem;
+        }
+
+        .form-control:focus {
+            box-shadow: none;
+            border-color: #0d6efd;
+            background-color: #fff;
+        }
+
+        .input-group-text {
+            background: #fff;
+            border: 1px solid #e1e1e1;
+            border-right: none;
+            border-radius: 10px 0 0 10px;
+            color: #aaa;
+            width: 45px;
+            justify-content: center;
+        }
+
+        .input-group:focus-within .input-group-text {
+            border-color: #0d6efd;
+            color: #0d6efd;
+        }
+
+        .btn-register {
+            height: 45px;
+            border-radius: 25px;
+            font-weight: 600;
+            background: linear-gradient(90deg, #0d6efd 0%, #0056b3 100%);
+            border: none;
+            transition: all 0.3s;
+        }
+
+        .btn-register:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(13, 110, 253, 0.4);
+        }
+
+        /* الأشكال العائمة */
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            animation: float 6s infinite ease-in-out;
+            z-index: 1;
+        }
+
+        .shape-1 {
+            width: 300px;
+            height: 300px;
+            top: -100px;
+            left: -100px;
+        }
+
+        .shape-2 {
+            width: 400px;
+            height: 400px;
+            bottom: -150px;
+            right: -150px;
+            animation-delay: 2s;
+        }
+
+        @@keyframes
+        float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* =========================================
+           Media Queries (تظبيط الموبايل)
+           ========================================= */
+        @@media
+        (max-width: 768px) {
+            .register-card {
+                /* نخلي الكارت ياخد العرض كامل مع هوامش بسيطة */
+                max-width: 100%;
+            }
+
+            .shape {
+                /* نصغر الأشكال شوية في الموبايل عشان متبقاش مزعجة */
+                opacity: 0.5;
+                transform: scale(0.7);
+            }
+
+            /* نصغر الهوامش الداخلية للكارت عشان نستفيد بالمساحة */
+            .p-4 {
+                padding: 1.5rem !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5">
+
+                <div class="register-card">
+                    <div class="register-header">
+                        <h4 class="fw-bold text-dark m-0 fs-5"><i class="fas fa-user-plus text-primary me-2"></i>Create
+                            Account</h4>
+                        <p class="text-muted small mb-0 mt-1">Join ONE Platform Community</p>
+                    </div>
+
+                    <div class="p-4">
+                        <form asp-action="SaveRegister" method="post" enctype="multipart/form-data">
+                            <div asp-validation-summary="ModelOnly"
+                                class="alert alert-danger py-2 text-center small mb-3"></div>
+
+                            <div class="text-center mb-3">
+                                <div class="profile-upload">
+                                    <img id="imagePreview" src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+                                        class="profile-img" alt="Profile" />
+                                    <label for="PictureUser" class="upload-icon" title="Upload Picture">
+                                        <i class="fas fa-camera"></i>
+                                    </label>
+                                    <input asp-for="PictureUser" type="file" class="d-none" id="PictureUser"
+                                        onchange="previewImage(event)" accept="image/*" />
+                                </div>
+                                <span asp-validation-for="PictureUser" class="text-danger small"></span>
                             </div>
-                            <span asp-validation-for="Password" class="text-danger"></span>
-                        </div>
 
-                        <!-- تأكيد كلمة المرور -->
-                        <div class="mb-3">
-                            <label asp-for="ConfirmPassword" class="form-label fw-bold">🔁 Confirm Password</label>
-                            <div class="input-group">
-                                <input asp-for="ConfirmPassword" type="password" class="form-control" id="confirmPassword" placeholder="Confirm password" />
-                                <button type="button" class="btn btn-outline-secondary" onclick="togglePassword('confirmPassword')">👁️</button>
+                            <div class="mb-3">
+                                <label asp-for="UserName" class="form-label fw-bold small text-muted text-uppercase"
+                                    style="font-size: 0.75rem;">Username</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                    <input asp-for="UserName" class="form-control" placeholder="Choose a username" />
+                                </div>
+                                <span asp-validation-for="UserName" class="text-danger small mt-1 d-block"></span>
                             </div>
-                            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
-                        </div>
 
-                        <div class="d-grid">
-                            <button type="submit" class="btn btn-primary fw-bold">🚀 Register</button>
-                        </div>
-                    </form>
+                            <div class="mb-3">
+                                <label asp-for="Email" class="form-label fw-bold small text-muted text-uppercase"
+                                    style="font-size: 0.75rem;">Email Address</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                                    <input asp-for="Email" class="form-control" placeholder="name@example.com" />
+                                </div>
+                                <span asp-validation-for="Email" class="text-danger small mt-1 d-block"></span>
+                            </div>
 
-                    <div class="mt-3 text-center">
-                        <a asp-action="Index" class="text-primary">⬅️ Back to list</a>
+                            <div class="mb-3">
+                                <label asp-for="Password" class="form-label fw-bold small text-muted text-uppercase"
+                                    style="font-size: 0.75rem;">Password</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                                    <input asp-for="Password" type="password" class="form-control" id="password"
+                                        placeholder="Create a password" style="border-right: none;" />
+                                    <button class="btn btn-outline-secondary border-light bg-white text-muted"
+                                        style="border: 1px solid #e1e1e1; border-left: none; border-radius: 0 10px 10px 0;"
+                                        type="button" onclick="togglePassword('password', 'icon1')">
+                                        <i class="fas fa-eye" id="icon1"></i>
+                                    </button>
+                                </div>
+                                <span asp-validation-for="Password" class="text-danger small mt-1 d-block"></span>
+                            </div>
+
+                            <div class="mb-4">
+                                <label asp-for="ConfirmPassword"
+                                    class="form-label fw-bold small text-muted text-uppercase"
+                                    style="font-size: 0.75rem;">Confirm Password</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                                    <input asp-for="ConfirmPassword" type="password" class="form-control"
+                                        id="confirmPassword" placeholder="Repeat password"
+                                        style="border-right: none;" />
+                                    <button class="btn btn-outline-secondary border-light bg-white text-muted"
+                                        style="border: 1px solid #e1e1e1; border-left: none; border-radius: 0 10px 10px 0;"
+                                        type="button" onclick="togglePassword('confirmPassword', 'icon2')">
+                                        <i class="fas fa-eye" id="icon2"></i>
+                                    </button>
+                                </div>
+                                <span asp-validation-for="ConfirmPassword"
+                                    class="text-danger small mt-1 d-block"></span>
+                            </div>
+
+                            <div class="d-grid gap-2 mb-4">
+                                <button type="submit" class="btn btn-primary btn-register">
+                                    REGISTER
+                                </button>
+                            </div>
+
+                            <div class="text-center">
+                                <p class="text-muted small">Already have an account?
+                                    <a asp-action="Login" class="fw-bold text-decoration-none text-primary">Login
+                                        here</a>
+                                </p>
+                            </div>
+                        </form>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
-</div>
 
-@section Scripts {
-    @await Html.PartialAsync("_ValidationScriptsPartial")
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"></script>
 
     <script>
-        function LoadFile(event) {
+        function previewImage(event) {
             var reader = new FileReader();
             reader.onload = function () {
-                var output = document.getElementById("myimg");
+                var output = document.getElementById("imagePreview");
                 output.src = reader.result;
             };
-            reader.readAsDataURL(event.target.files[0]);
+            if (event.target.files[0]) {
+                reader.readAsDataURL(event.target.files[0]);
+            }
         }
 
-        function togglePassword(inputId) {
-            var passwordInput = document.getElementById(inputId);
-            passwordInput.type = passwordInput.type === "password" ? "text" : "password";
+        function togglePassword(inputId, iconId) {
+            var input = document.getElementById(inputId);
+            var icon = document.getElementById(iconId);
+
+            if (input.type === "password") {
+                input.type = "text";
+                icon.classList.remove("fa-eye");
+                icon.classList.add("fa-eye-slash");
+            } else {
+                input.type = "password";
+                icon.classList.remove("fa-eye-slash");
+                icon.classList.add("fa-eye");
+            }
         }
     </script>
-}
+</body>
+
+</html>

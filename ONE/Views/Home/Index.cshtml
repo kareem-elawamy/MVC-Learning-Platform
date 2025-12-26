@@ -1,80 +1,216 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-
 @model IEnumerable<ONE.Models.Video>
-<div class="container mt-4">
-    <h2 class="mb-4 text-center">📹 Educational Videos List</h2>
 
-    <form method="get" asp-action="Index" class="mb-4 p-3 rounded shadow-sm bg-light">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<link rel="stylesheet" href="~/css/home.css" />
+
+<div class="container mt-4">
+    <div class="hero-section text-center" data-aos="fade-down">
+        <i class="fas fa-shapes position-absolute start-0 top-0 text-white opacity-25 fa-10x"
+            style="transform: rotate(-20deg) translate(-50px, -50px);"></i>
+
+        <h1 class="display-4 fw-bold mb-3"><i class="fas fa-graduation-cap me-2"></i>ONE Platform</h1>
+        <p class="lead opacity-75">Master your skills with our curated video library.</p>
+    </div>
+</div>
+
+<div class="container">
+    <div class="d-flex align-items-center justify-content-between mb-4">
+        <h3 class="fw-bold text-dark"><i class="fas fa-video text-primary me-2"></i>Latest Videos</h3>
+        <span class="badge bg-light text-dark border px-3 py-2 rounded-pill">
+            <i class="fas fa-layer-group me-1"></i> Total: @Model.Count()
+        </span>
+    </div>
+
+    <form method="get" asp-action="Index" class="mb-5 p-4 shadow-sm glass-filter" data-aos="fade-up">
         <div class="row g-3 align-items-end">
             <div class="col-md-4">
-                <label for="trackId" class="form-label fw-bold">🎯 Select Track:</label>
-                <select id="trackId" name="trackId" class="form-select" asp-items="ViewBag.Tracks">
-                    <option value="">📌 All</option>
+                <label for="trackId" class="form-label fw-bold text-secondary small text-uppercase">
+                    <i class="fas fa-bullseye me-1"></i> Track
+                </label>
+                <select id="trackId" name="trackId" class="form-select border-0 bg-light py-2"
+                    asp-items="ViewBag.Tracks">
+                    <option value="">All Tracks</option>
                 </select>
+            </div>
+
+            <div class="col-md-4 position-relative">
+                <label for="materialId" class="form-label fw-bold text-secondary small text-uppercase">
+                    <i class="fas fa-book me-1"></i> Subject
+                </label>
+                <select id="materialId" name="materialId" class="form-select border-0 bg-light py-2"
+                    asp-items="ViewBag.Materials">
+                    <option value="">All Subjects</option>
+                </select>
+                <div id="loadingSpinner"
+                    class="spinner-border spinner-border-sm text-primary position-absolute end-0 bottom-0 mb-2 me-4 d-none"
+                    role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
             </div>
 
             <div class="col-md-4">
-                <label for="materialId" class="form-label fw-bold">📚 Select Subject:</label>
-                <select id="materialId" name="materialId" class="form-select" asp-items="ViewBag.Materials">
-                    <option value="">📌 All</option>
-                </select>
-            </div>
-
-            <div class="col-md-4 d-flex justify-content-center">
-                <button type="submit" class="btn btn-primary px-4 fw-bold">🔍 Filter</button>
+                <button type="submit" class="btn btn-primary w-100 fw-bold py-2 shadow-sm">
+                    <i class="fas fa-filter me-2"></i> Apply Filter
+                </button>
             </div>
         </div>
     </form>
+
     <div class="row row-cols-1 row-cols-md-3 g-4">
+        @{
+            int delay = 0;
+        }
         @foreach (var video in Model)
         {
-            <div class="col">
-                <div class="card h-100 shadow-sm">
-                    <a href="https://www.youtube.com/watch?v=@video.VideoId" target="_blank" class="text-decoration-none">
-                        <img src="@video.ThumbnailUrl" class="card-img-top rounded-top" alt="Video Thumbnail">
-                    </a>
-                    <div class="card-body text-center">
-                        <h5 class="card-title fw-bold text-primary">@video.Title</h5>
-                        <p class="card-text text-muted">
-                            @(video.Description.Length > 80 ? video.Description.Substring(0, 80) + "..." : video.Description)
-                        </p>
-                        <p class="small text-secondary">
-                            📚 Subject: <strong>@video.Material?.Name</strong> | 🎯 Track: <strong>@video.Material?.Track?.Name</strong>
-                        </p>
-                    </div>
-                    <div class="card-footer text-center bg-white border-0">
-                        <a href="https://www.youtube.com/watch?v=@video.VideoId" target="_blank" class="btn btn-success w-75 fw-bold">
-                            ▶️ Watch Video
-                        </a>
-                        <form method="post" asp-controller="Favorite" asp-action="Add">
+            <div class="col" data-aos="fade-up" data-aos-delay="@delay">
+                <div class="card h-100 video-card">
+                    <div class="card-img-wrapper"
+                        onclick="playVideo('@video.VideoId', '@video.Title', '@video.Material?.Name')"
+                        data-bs-toggle="modal" data-bs-target="#videoModal">
+
+                        <img src="@video.ThumbnailUrl" class="card-img-top" alt="@video.Title">
+                        <div class="play-overlay">
+                            <i class="fas fa-play"></i>
+                        </div>
+
+                        <span
+                            class="position-absolute top-0 start-0 m-3 badge bg-dark bg-opacity-75 backdrop-blur shadow-sm">
+                            <i class="fas fa-tag me-1 text-warning"></i> @video.Material?.Name
+                        </span>
+
+                        <form method="post" asp-controller="Favorite" asp-action="Add"
+                            class="position-absolute top-0 end-0 m-3" onclick="event.stopPropagation()">
                             <input type="hidden" name="videoId" value="@video.Id" />
-                            <button type="submit" class="btn btn-secondary mt-2">Add to Favorites</button>
+                            <button type="submit" class="btn btn-light rounded-circle shadow-sm btn-favorite p-2"
+                                title="Add to Favorites" style="width: 40px; height: 40px;">
+                                <i class="far fa-heart text-danger"></i>
+                            </button>
                         </form>
                     </div>
+
+                    <div class="card-body">
+                        <small class="text-primary fw-bold text-uppercase" style="font-size: 0.75rem;">
+                            @video.Material?.Track?.Name
+                        </small>
+                        <h5 class="card-title fw-bold mt-2 text-dark">@video.Title</h5>
+                        <p class="card-text text-muted small mt-2">
+                            @(video.Description?.Length > 80 ? video.Description.Substring(0, 80) + "..." :
+                                                    video.Description)
+                        </p>
+                    </div>
+
+                    <div class="card-footer bg-white border-0 pt-0 pb-4">
+                        <button onclick="playVideo('@video.VideoId', '@video.Title', '@video.Material?.Name')"
+                            class="btn btn-outline-primary w-100 rounded-pill fw-bold btn-sm" data-bs-toggle="modal"
+                            data-bs-target="#videoModal">
+                            Watch Now <i class="fas fa-play-circle ms-1"></i>
+                        </button>
+                    </div>
                 </div>
+            </div>
+            delay += 100;
+        }
+
+        @if (!Model.Any())
+        {
+            <div class="col-12 text-center py-5" data-aos="zoom-in">
+                <div class="text-muted opacity-50 mb-3">
+                    <i class="fas fa-folder-open fa-4x"></i>
+                </div>
+                <h4 class="fw-bold text-secondary">No Content Found</h4>
+                <p class="text-muted">Try changing the filters above.</p>
             </div>
         }
     </div>
 </div>
-<script>
-    document.getElementById("trackId").addEventListener("change", function () {
-        var trackId = this.value;
-        var materialDropdown = document.getElementById("materialId");
 
-        if (trackId) {
-            fetch(`/Video/GetMaterialsByTrack?trackId=` + trackId)
-                .then(response => response.json())
-                .then(data => {
-                    materialDropdown.innerHTML = '<option value="">📌 All</option>';
-                    data.forEach(material => {
-                        materialDropdown.innerHTML += `<option value="${material.id}">${material.name}</option>`;
-                    });
-                })
-                .catch(error => console.error("Error fetching materials:", error));
-        } else {
-            materialDropdown.innerHTML = '<option value="">📌 All</option>';
+<div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="videoModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content modal-content-custom">
+            <div class="modal-header-custom">
+                <div class="d-flex align-items-center">
+                    <span id="modalCategory" class="video-badge-modal">Category</span>
+                    <h5 id="modalVideoTitle" class="video-title-modal">Video Title</h5>
+                </div>
+                <button type="button" class="btn-close-custom" data-bs-dismiss="modal" aria-label="Close"
+                    onclick="stopVideo()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <div class="modal-body p-0">
+                <div class="ratio ratio-16x9">
+                    <iframe id="youtubeFrame" src="" title="YouTube video" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ once: true, offset: 50 });
+
+        // === Updated Video Logic ===
+        // دلوقتي الدالة بتستقبل 3 حاجات: الايدي، والعنوان، واسم المادة
+        function playVideo(videoId, title, category) {
+            var iframe = document.getElementById("youtubeFrame");
+            var titleElem = document.getElementById("modalVideoTitle");
+            var catElem = document.getElementById("modalCategory");
+
+            // 1. تشغيل الفيديو
+            iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
+
+            // 2. تحديث البيانات في المودال
+            titleElem.innerText = title;
+            catElem.innerText = category;
         }
-    });
-</script>
+
+        function stopVideo() {
+            var iframe = document.getElementById("youtubeFrame");
+            iframe.src = "";
+        }
+
+        var videoModal = document.getElementById('videoModal');
+        videoModal.addEventListener('hidden.bs.modal', function () {
+            stopVideo();
+        });
+
+        // Filter Logic
+        document.getElementById("trackId").addEventListener("change", function () {
+            var trackId = this.value;
+            var materialDropdown = document.getElementById("materialId");
+            var spinner = document.getElementById("loadingSpinner");
+
+            spinner.classList.remove("d-none");
+            materialDropdown.disabled = true;
+
+            if (trackId) {
+                fetch(`/Video/GetMaterialsByTrack?trackId=` + trackId)
+                    .then(response => response.json())
+                    .then(data => {
+                        materialDropdown.innerHTML = '<option value="">All Subjects</option>';
+                        data.forEach(material => {
+                            materialDropdown.innerHTML += `<option value="${material.id}">${material.name}</option>`;
+                        });
+                    })
+                    .catch(error => console.error("Error:", error))
+                    .finally(() => {
+                        spinner.classList.add("d-none");
+                        materialDropdown.disabled = false;
+                    });
+            } else {
+                materialDropdown.innerHTML = '<option value="">All Subjects</option>';
+                spinner.classList.add("d-none");
+                materialDropdown.disabled = false;
+            }
+        });
+    </script>
+}

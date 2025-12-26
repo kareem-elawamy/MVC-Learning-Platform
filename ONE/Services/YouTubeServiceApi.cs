@@ -6,7 +6,7 @@ namespace ONE.Services
 {
     public class YouTubeServiceApi
     {
-        private readonly string _apiKey = "AIzaSyCOIVuAlAc9ftp186d6_w5WZbJot0dgEQM"; 
+        private readonly string _apiKey = "AIzaSyCOIVuAlAc9ftp186d6_w5WZbJot0dgEQM";
         public async Task<YouTubeVideoData> GetVideoDetails(string videoId)
         {
             var youTubeService = new YouTubeService(new BaseClientService.Initializer()
@@ -21,6 +21,7 @@ namespace ONE.Services
                 var video = response.Items[0];
                 return new YouTubeVideoData
                 {
+                    VideoId = videoId,
                     Title = video.Snippet.Title,
                     ThumbnailUrl = video.Snippet.Thumbnails.High.Url,
                     Description = video.Snippet.Description
@@ -29,5 +30,6 @@ namespace ONE.Services
 
             return null;
         }
+        
     }
 }

@@ -1,0 +1,142 @@
+    body {
+        font-family: 'Poppins', sans-serif;
+        background: #f8f9fa;
+    }
+
+    .hero-section {
+        background: linear-gradient(135deg, #0d6efd 0%, #0099ff 100%);
+        color: white;
+        padding: 80px 20px;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(13, 110, 253, 0.3);
+        margin-bottom: 40px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* Glassmorphism Filter Box */
+    .glass-filter {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 15px;
+    }
+
+    /* Card Styling */
+    .video-card {
+        border: none;
+        border-radius: 15px;
+        transition: all 0.3s ease;
+        background: white;
+        overflow: hidden;
+    }
+
+    .video-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-img-wrapper {
+        position: relative;
+        height: 200px;
+        overflow: hidden;
+        cursor: pointer;
+        /* مهم عشان يعرف انه كليكابل */
+    }
+
+    .card-img-top {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+    }
+
+    .video-card:hover .card-img-top {
+        transform: scale(1.1);
+    }
+
+    /* Play Icon Overlay */
+    .play-overlay {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0);
+        width: 60px;
+        height: 60px;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.3s ease;
+        color: #0d6efd;
+        font-size: 24px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .video-card:hover .play-overlay {
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    /* Heart Button Animation */
+    .btn-favorite {
+        transition: all 0.2s;
+        z-index: 10;
+    }
+
+    .btn-favorite:hover {
+        transform: scale(1.1);
+        color: #dc3545 !important;
+    }
+
+    /* تنسيق المودال الجديد */
+    .modal-content-custom {
+        background-color: #0f0f0f;
+        border: 1px solid #333;
+        border-radius: 20px;
+        box-shadow: 0 0 20px rgba(13, 110, 253, 0.2);
+        overflow: hidden;
+    }
+
+    .modal-header-custom {
+        border-bottom: 1px solid #222;
+        padding: 15px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .video-title-modal {
+        color: white;
+        font-weight: 600;
+        margin: 0;
+        font-size: 1.1rem;
+    }
+
+    .video-badge-modal {
+        background: rgba(13, 110, 253, 0.2);
+        color: #0d6efd;
+        padding: 5px 12px;
+        border-radius: 50px;
+        font-size: 0.8rem;
+        margin-right: 10px;
+    }
+
+    .btn-close-custom {
+        background: #222;
+        border: none;
+        color: #fff;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+
+    .btn-close-custom:hover {
+        background: #dc3545;
+        transform: rotate(90deg);
+    }

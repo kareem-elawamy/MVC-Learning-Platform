@@ -8,7 +8,7 @@ namespace ONE.Services
     {
         private readonly AddDbContext _context;
 
-        public FavoriteService(AddDbContext context )
+        public FavoriteService(AddDbContext context)
         {
             _context = context;
         }
@@ -16,7 +16,7 @@ namespace ONE.Services
         public async Task<bool> AddToFavorite(string userId, int videoId)
         {
             if (_context.Favorites.Any(f => f.UserId == userId && f.VideoId == videoId))
-                return false; 
+                return false;
 
             var favorite = new FavoriteVideo
             {
@@ -43,7 +43,7 @@ namespace ONE.Services
 
         public async Task<List<Video>> GetUserFavorites(string userId)
         {
-            return await _context.Favorites
+            return await _context.Favorites.Include(v => v.Video).ThenInclude(v => v.Material)
                 .Where(f => f.UserId == userId)
                 .Select(f => f.Video)
                 .ToListAsync();

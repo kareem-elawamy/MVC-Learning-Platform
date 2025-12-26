@@ -1,97 +1,209 @@
 ﻿@using Microsoft.AspNetCore.Identity
 @inject UserManager<ApplicationUser> UserManager
 @inject SignInManager<ApplicationUser> SignInManager
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - ONE</title>
+    <title>@ViewData["Title"] - ONE Platform</title>
+
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/ONE.styles.css" asp-append-version="true" />
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Navbar Styling */
+        .navbar-custom {
+            background: linear-gradient(90deg, #0d6efd 0%, #0099ff 100%);
+            box-shadow: 0 4px 15px rgba(13, 110, 253, 0.2);
+            padding: 15px 0;
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            margin: 0 5px;
+            transition: all 0.3s;
+        }
+
+        .nav-link:hover {
+            color: #fff !important;
+            transform: translateY(-2px);
+        }
+
+        .nav-link.active {
+            font-weight: 700;
+            border-bottom: 2px solid white;
+        }
+
+        /* User Dropdown */
+        .user-avatar {
+            width: 35px;
+            height: 35px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.8);
+        }
+
+        .dropdown-menu {
+            border: none;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            margin-top: 10px;
+        }
+
+        .dropdown-item {
+            padding: 10px 20px;
+            font-size: 0.9rem;
+        }
+
+        .dropdown-item:hover {
+            background-color: #f0f7ff;
+            color: #0d6efd;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: auto;
+            background-color: white;
+            border-top: 1px solid #eee;
+            padding: 20px 0;
+            font-size: 0.9rem;
+        }
+    </style>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <div class="container-fluid">
-            <a class="navbar-brand" asp-controller="Home" asp-action="Index">ONE</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
+            <div class="container">
+                <a class="navbar-brand" asp-controller="Home" asp-action="Index">
+                    <i class="fas fa-graduation-cap me-2"></i>ONE
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+                    aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" asp-controller="Home" asp-action="Index" aria-current="page" >Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-controller="Chat" asp-action="Index" >Chat</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-controller="Favorite" asp-action="Index">Favorite</a>
-                    </li>
-                </ul>
-
-                <ul class="navbar-nav ms-auto">
-                    @if (!User.Identity.IsAuthenticated)
-                    {
+                <div class="collapse navbar-collapse" id="navbarContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link" asp-action="Register" asp-controller="Account">Register</a>
+                            <a class="nav-link @(ViewContext.RouteData.Values["Controller"]?.ToString() == "Home" ? "active" : "")"
+                                asp-controller="Home" asp-action="Index">
+                                <i class="fas fa-home me-1"></i> Home
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-action="Login" asp-controller="Account">Login</a>
+                            <a class="nav-link @(ViewContext.RouteData.Values["Controller"]?.ToString() == "Chat" ? "active" : "")"
+                                asp-controller="Chat" asp-action="Index">
+                                <i class="fas fa-comments me-1"></i> Chat
+                            </a>
                         </li>
-                    }
-                    else
-                    {
-                        <li class="nav-item"  style="display: flex; align-items: center;  justify-content: center;">
-                            <a class="nav-link " asp-action="SiginOut" asp-controller="Account">Logout</a>
+                        <li class="nav-item">
+                            <a class="nav-link @(ViewContext.RouteData.Values["Controller"]?.ToString() == "Favorite" ? "active" : "")"
+                                asp-controller="Favorite" asp-action="Index">
+                                <i class="fas fa-heart me-1"></i> Favorites
+                            </a>
                         </li>
-                        
+
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="adminDropdown" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fas fa-shield-alt me-1"></i> Admin
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="adminDropdown">
+                                    <li><a class="dropdown-item" asp-controller="Video" asp-action="Index"><i
+                                                class="fas fa-video me-2"></i> Manage Videos</a></li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li><a class="dropdown-item" asp-controller="Admin" asp-action="Index"><i
+                                                class="fas fa-users-cog me-2"></i> Dashboard</a></li>
+                                </ul>
+                            </li>
+                        }
+                    </ul>
+
+                    <ul class="navbar-nav ms-auto align-items-center">
                         @if (SignInManager.IsSignedIn(User))
                         {
-                            var user = User != null ? await UserManager.GetUserAsync(User) : null;
-                            if (user != null)
-                            {
-                                // Proceed with user-specific logic
-                            <li class="nav-item" style="display: flex; align-items: center;  justify-content: center;">
-                                <a class="nav-link" asp-action="Profile" asp-controller="Account">Hi, @user.UserName</a>
+                            var user = await UserManager.GetUserAsync(User);
+                            var profilePic = user?.PictureSource != null
+                            ? $"data:image/jpeg;base64,{Convert.ToBase64String(user.PictureSource)}"
+                            : "/images/default-avatar.png"; // يفضل تحط صورة افتراضية
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="userDropdown"
+                                    role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <span class="me-2 fw-bold">@User.Identity?.Name</span>
+                                    <img src="@profilePic" alt="Profile" class="user-avatar shadow-sm" />
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-end animate slideIn" aria-labelledby="userDropdown">
+                                    <li>
+                                        <a class="dropdown-item" asp-controller="Account" asp-action="Profile">
+                                            <i class="fas fa-user-circle me-2 text-primary"></i> My Profile
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li>
+
+                                        <a class="dropdown-item text-danger" asp-controller="Account" asp-action="SiginOut">
+                                            <i class="fas fa-sign-out-alt me-2"></i> Logout
+                                        </a>
+                                    </li>
+                                </ul>
                             </li>
-                            @if (user.PictureSource != null)
-                            {
-                                <li class="nav-item ">
-                                    <a class="nav-link" asp-action="Profile"  asp-controller="Account">
-                                    
-
-                                    <img src="data:image/jpeg;base64,@(Convert.ToBase64String(user.PictureSource))"
-                                         alt="User Picture"
-                                         style="width:50px;height:50px;border-radius:50%;" />
-                                    </a>
-                                </li>
-                            }
-                                @if(User.Identity.AuthenticationType=="Admin"){
-                                    <li class="nav-item" style="display: flex; align-items: center;  justify-content: center;">
-                                        <a class="nav-link" asp-action="Video" asp-controller="Index">Video</a>
-                                    </li>
-                                    <li class="nav-item" style="display: flex; align-items: center;  justify-content: center;">
-                                        <a class="nav-link" asp-action="Admin" asp-controller="Index">Admin</a>
-                                    </li>
-                                }
-                            }
                         }
-
-                    }
-                </ul>
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="btn btn-outline-light rounded-pill px-4 me-2" asp-controller="Account"
+                                    asp-action="Login">Login</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="btn btn-light text-primary rounded-pill px-4 fw-bold" asp-controller="Account"
+                                    asp-action="Register">Join Now</a>
+                            </li>
+                        }
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
+    </header>
 
-    <div class="container">
+    <div class="container py-4 flex-grow-1">
         <main role="main">
             @RenderBody()
         </main>
     </div>
+
+    <footer class="footer text-muted text-center">
+        <div class="container">
+            &copy; 2025 - <strong>ONE Platform</strong> - Designed for Education <i class="fas fa-book-reader ms-1"></i>
+        </div>
+    </footer>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
@@ -99,4 +211,5 @@
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>
+
 </html>

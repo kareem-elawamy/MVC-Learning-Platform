@@ -8,7 +8,7 @@ using System.Diagnostics;
 
 namespace ONE.Controllers
 {
-    [Authorize(Roles ="Admin")]
+    // [Authorize(Roles ="Admin")]
     public class AdminController : Controller
     {
         private readonly AddDbContext _context;

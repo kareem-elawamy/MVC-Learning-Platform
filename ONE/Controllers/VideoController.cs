@@ -10,11 +10,11 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace ONE.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    // [Authorize(Roles = "Admin")]
 
 
     public class VideoController : Controller
-    {   
+    {
         private readonly AddDbContext _context;
         private readonly YouTubeServiceApi _serviceApi;
         public VideoController(AddDbContext context, YouTubeServiceApi serviceApi)
@@ -67,10 +67,10 @@ namespace ONE.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(Video video)
         {
-           
+
             if (!ModelState.IsValid)
             {
-                
+
                 ViewData["MaterialID"] = new SelectList(_context.Materials, "Id", "Name");
                 return View(video);
             }
@@ -78,7 +78,7 @@ namespace ONE.Controllers
             var videoDY = await _serviceApi.GetVideoDetails(video.VideoId);
             if (videoDY == null)
             {
-                
+
                 ViewData["MaterialID"] = new SelectList(_context.Materials, "Id", "Name");
                 return View(video);
             }
@@ -115,4 +115,3 @@ namespace ONE.Controllers
 
     }
 }
-

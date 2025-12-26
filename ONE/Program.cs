@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using ONE.Data;
+using ONE.Hubs;
 using ONE.Models;
 using ONE.Services;
 
@@ -36,9 +37,12 @@ namespace ONE
             })
              .AddEntityFrameworkStores<AddDbContext>();
             builder.Services.AddScoped<FavoriteService>();
+            builder.Services.AddHttpClient<IGeminiService, GeminiService>();
+            builder.Services.AddSignalR();
 
             var app = builder.Build();
 
+            app.MapHub<ChatHub>("/chatHub");
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
             {

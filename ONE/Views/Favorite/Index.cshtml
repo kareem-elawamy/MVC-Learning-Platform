@@ -1,5 +1,66 @@
 ﻿@model List<ONE.Models.Video>
 
+@{
+    ViewData["Title"] = "My Favorites";
+}
+<style>
+    /* تنسيق المودال الجديد */
+    .modal-content-custom {
+        background-color: #0f0f0f;
+        /* لون أسود هادي */
+        border: 1px solid #333;
+        border-radius: 20px;
+        box-shadow: 0 0 20px rgba(13, 110, 253, 0.2);
+        /* توهج أزرق خفيف */
+        overflow: hidden;
+    }
+
+    .modal-header-custom {
+        border-bottom: 1px solid #222;
+        padding: 15px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .video-title-modal {
+        color: white;
+        font-weight: 600;
+        margin: 0;
+        font-size: 1.1rem;
+    }
+
+    .video-badge-modal {
+        background: rgba(13, 110, 253, 0.2);
+        color: #0d6efd;
+        padding: 5px 12px;
+        border-radius: 50px;
+        font-size: 0.8rem;
+        margin-right: 10px;
+    }
+
+    /* زرار الإغلاق المخصص */
+    .btn-close-custom {
+        background: #222;
+        border: none;
+        color: #fff;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+
+    .btn-close-custom:hover {
+        background: #dc3545;
+        /* يحمر لما تقف عليه */
+        transform: rotate(90deg);
+    }
+</style>
+
 <h2>My favorite</h2>
 
 <table class="table">
@@ -27,12 +88,56 @@
 
                 </td>
                 <td>
-                    <a href="https://www.youtube.com/watch?v=@video.VideoId" target="_blank" class="btn btn-success w-auto fw-bold">
-                        ▶️ 
-                    </a>
+                    <button onclick="playVideo('@video.VideoId')"
+                        class="btn btn-outline-primary w-100 rounded-pill fw-bold btn-sm" data-bs-toggle="modal"
+                        data-bs-target="#videoModal">
+                        Watch Now <i class="fas fa-play-circle ms-1"></i>
+                    </button>
+                    <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="videoModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-lg">
+                            <div class="modal-content modal-content-custom">
+                                <div class="modal-header-custom">
+                                    <div class="d-flex align-items-center">
+                                        <span id="modalCategory" class="video-badge-modal">@video.Material?.Name</span>
+                                        <h5 id="modalVideoTitle" class="video-title-modal">@video.Title</h5>
+                                    </div>
+                                    <button type="button" class="btn-close-custom" data-bs-dismiss="modal"
+                                        aria-label="Close" onclick="stopVideo()">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+
+                                <div class="modal-body p-0">
+                                    <div class="ratio ratio-16x9">
+                                        <iframe id="youtubeFrame" src="" title="YouTube video" allowfullscreen></iframe>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </td>
             </tr>
         }
     </tbody>
 </table>
-    
+
+@section Scripts {
+    <script>
+        function playVideo(videoId) {
+            var iframe = document.getElementById("youtubeFrame");
+            iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
+        }
+
+        function stopVideo() {
+            var iframe = document.getElementById("youtubeFrame");
+            iframe.src = "";
+        }
+
+        var videoModal = document.getElementById('videoModal');
+        videoModal.addEventListener('hidden.bs.modal', function () {
+            stopVideo();
+        });
+
+    </script>
+}
